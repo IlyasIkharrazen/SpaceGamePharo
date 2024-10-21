@@ -1,5 +1,5 @@
 Class {
-	#name : 'Nebula',
+	#name : 'SolarSystem',
 	#superclass : 'Space',
 	#instVars : [
 		'region'
@@ -9,7 +9,7 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
-Nebula >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
+SolarSystem >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
 
 	| Dd As |
 	Dd := anElement1 damage * anElement1 shields + anElement1 region.
@@ -21,7 +21,7 @@ Nebula >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
 ]
 
 { #category : 'as yet unclassified' }
-Nebula >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
+SolarSystem >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
 
 	| Dd As |
 	Dd := anElement1 damage * anElement1 shields + anElement1 region.
@@ -33,7 +33,7 @@ Nebula >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
 ]
 
 { #category : 'as yet unclassified' }
-Nebula >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
+SolarSystem >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
 
 	| Dd As |
 	Dd := anElement1 damage * anElement1 shields + anElement1 region.
@@ -45,7 +45,7 @@ Nebula >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
 ]
 
 { #category : 'as yet unclassified' }
-Nebula >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
+SolarSystem >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
 
 	| Dd As |
 	Dd := anElement1 damage * anElement1 shields + anElement1 region.
@@ -57,7 +57,7 @@ Nebula >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
 ]
 
 { #category : 'initialization' }
-Nebula >> initialize [
+SolarSystem >> initialize [
 
 	region := SolarSystem new
 ]

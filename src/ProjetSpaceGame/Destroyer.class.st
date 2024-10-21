@@ -14,49 +14,25 @@ Class {
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstBattleCruiser: anElement [
 
-	| Dd As |
-	Dd := anElement damage * anElement shields + anElement region.
-
-	As := damage * shields + region.
-
-	anElement shields: anElement shields - As.
-	shields := shields - Dd.
+	region applyAttackAgainstBattleCruiser: anElement ships: self
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstCruiser: anElement [
 
-	| Dd As |
-	Dd := anElement damage * anElement shields + anElement region.
-
-	As := damage * shields + region.
-
-	anElement shields: anElement shields - As.
-	shields := shields - Dd.
+	region applyAttackAgainstCruiser: anElement ships: self
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstDestroyer: anElement [
 
-	| Dd As |
-	Dd := anElement damage * anElement shields + anElement region.
-
-	As := damage * shields + region.
-
-	anElement shields: anElement shields - As.
-	shields := shields - Dd.
+	region applyAttackAgainstDestroyer: anElement ships: self
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstFighter: anElement [
 
-	| Dd As |
-	Dd := anElement damage * anElement shields + anElement region.
-
-	As := damage * shields + region.
-
-	anElement shields: anElement shields - As.
-	shields := shields - Dd.
+	region applyAttackAgainstFighter: anElement ships: self
 ]
 
 { #category : 'accessing' }
@@ -90,9 +66,7 @@ Destroyer >> initialize [
 	shields := 5000.
 	hull := 10000.
 	damage := 2000.
-	region := 0
-
-
+	region := SolarSystem
 ]
 
 { #category : 'accessing' }
