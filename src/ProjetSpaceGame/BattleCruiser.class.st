@@ -15,52 +15,48 @@ Class {
 BattleCruiser >> attackAgainstBattleCruiser: anElement [
 
 	| Dd As |
-	Dd := damage * shields + region.
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 BattleCruiser >> attackAgainstCruiser: anElement [
 
 	| Dd As |
-	Dd := damage * shields + region.
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 BattleCruiser >> attackAgainstDestroyer: anElement [
 
 	| Dd As |
-	Dd := damage * shields + region.
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 BattleCruiser >> attackAgainstFighter: anElement [
 
 	| Dd As |
-	Dd := damage * shields + region.
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'accessing' }

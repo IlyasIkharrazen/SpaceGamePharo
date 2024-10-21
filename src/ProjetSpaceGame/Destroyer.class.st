@@ -14,53 +14,49 @@ Class {
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstBattleCruiser: anElement [
 
-| Dd As |
-	Dd := damage * shields + region.
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstCruiser: anElement [
 
-| Dd As |
-	Dd := damage * shields + region.
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstDestroyer: anElement [
 
-| Dd As |
-	Dd := damage * shields + region.
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstFighter: anElement [
 
-| Dd As |
-	Dd := damage * shields + region.
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-	As := anElement damage * anElement shields + (anElement region).
+	As := damage * shields + region.
 
-	anElement shields: anElement shields - 20.
-	anElement hull: anElement hull - 20.
-	anElement damage: anElement damage - 20
+	anElement shields: anElement shields - As.
+	shields := shields - Dd.
 ]
 
 { #category : 'accessing' }
