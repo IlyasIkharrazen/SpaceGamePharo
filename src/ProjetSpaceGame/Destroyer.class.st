@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'shields',
 		'hull',
-		'damage'
+		'damage',
+		'region'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
@@ -12,6 +13,11 @@ Class {
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstBattleCruiser: anElement [
+
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -21,6 +27,11 @@ Destroyer >> attackAgainstBattleCruiser: anElement [
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstCruiser: anElement [
 
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -29,6 +40,11 @@ Destroyer >> attackAgainstCruiser: anElement [
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstDestroyer: anElement [
 
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -36,6 +52,11 @@ Destroyer >> attackAgainstDestroyer: anElement [
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstFighter: anElement [
+
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -69,9 +90,25 @@ Destroyer >> hull: anObject [
 { #category : 'initialization' }
 Destroyer >> initialize [
 
+	super initialize.
 	shields := 5000.
 	hull := 10000.
 	damage := 2000.
+	region := 0
+
+
+]
+
+{ #category : 'accessing' }
+Destroyer >> region [
+
+	^ region
+]
+
+{ #category : 'accessing' }
+Destroyer >> region: anObject [
+
+	region := anObject
 ]
 
 { #category : 'accessing' }

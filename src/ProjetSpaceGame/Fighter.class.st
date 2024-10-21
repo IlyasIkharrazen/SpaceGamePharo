@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'shields',
 		'hull',
-		'damage'
+		'damage',
+		'region'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
@@ -12,6 +13,11 @@ Class {
 
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstBattleCruiser: anElement [
+
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -21,6 +27,11 @@ Fighter >> attackAgainstBattleCruiser: anElement [
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstCruiser: anElement [
 
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -29,6 +40,11 @@ Fighter >> attackAgainstCruiser: anElement [
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstDestroyer: anElement [
 
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -36,6 +52,11 @@ Fighter >> attackAgainstDestroyer: anElement [
 
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstFighter: anElement [
+
+| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -69,9 +90,24 @@ Fighter >> hull: anObject [
 { #category : 'initialization' }
 Fighter >> initialize [
 
+	super initialize.
 	shields := 100.
 	hull := 400.
 	damage := 50.
+	region := 0
+
+]
+
+{ #category : 'accessing' }
+Fighter >> region [
+
+	^ region
+]
+
+{ #category : 'accessing' }
+Fighter >> region: anObject [
+
+	region := anObject
 ]
 
 { #category : 'accessing' }

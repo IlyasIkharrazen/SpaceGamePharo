@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'shields',
 		'hull',
-		'damage'
+		'damage',
+		'region'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
@@ -12,6 +13,11 @@ Class {
 
 { #category : 'as yet unclassified' }
 Cruiser >> attackAgainstBattleCruiser: anElement [
+
+	| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -21,6 +27,11 @@ Cruiser >> attackAgainstBattleCruiser: anElement [
 { #category : 'as yet unclassified' }
 Cruiser >> attackAgainstCruiser: anElement [
 
+	| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -29,6 +40,11 @@ Cruiser >> attackAgainstCruiser: anElement [
 { #category : 'as yet unclassified' }
 Cruiser >> attackAgainstDestroyer: anElement [
 
+	| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
+	
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
 	anElement damage: anElement damage - 20
@@ -36,6 +52,11 @@ Cruiser >> attackAgainstDestroyer: anElement [
 
 { #category : 'as yet unclassified' }
 Cruiser >> attackAgainstFighter: anElement [
+
+	| Dd As |
+	Dd := damage * shields + region.
+
+	As := anElement damage * anElement shields + (anElement region).
 
 	anElement shields: anElement shields - 20.
 	anElement hull: anElement hull - 20.
@@ -69,9 +90,23 @@ Cruiser >> hull: anObject [
 { #category : 'initialization' }
 Cruiser >> initialize [
 
+	super initialize.
 	shields := 1000.
 	hull := 8000.
-	damage := 400
+	damage := 400.
+	region := 0.
+]
+
+{ #category : 'accessing' }
+Cruiser >> region [
+
+	^ region
+]
+
+{ #category : 'accessing' }
+Cruiser >> region: anObject [
+
+	region := anObject
 ]
 
 { #category : 'accessing' }
