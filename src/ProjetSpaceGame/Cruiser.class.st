@@ -12,6 +12,13 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+Cruiser >> adjustForAsteroidField [
+    "Cruisers take 75% additional damage in asteroid fields"
+    self shields: (self shields * 0.25) rounded.
+    self hull: (self hull * 0.25) rounded.
+]
+
+{ #category : 'as yet unclassified' }
 Cruiser >> attackAgainstBattleCruiser: anElement [
 
 	region applyAttackAgainstBattleCruiser: anElement ships: self
@@ -33,6 +40,14 @@ Cruiser >> attackAgainstDestroyer: anElement [
 Cruiser >> attackAgainstFighter: anElement [
 
 	region applyAttackAgainstFighter: anElement ships: self
+]
+
+{ #category : 'as yet unclassified' }
+Cruiser >> calculateDamage: baseAmount inRegion: region [
+    region isAsteroidField ifTrue: [
+        ^ (baseAmount * 0.5) rounded
+    ].
+    ^ baseAmount
 ]
 
 { #category : 'accessing' }

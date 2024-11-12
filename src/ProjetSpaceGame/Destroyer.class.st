@@ -12,6 +12,12 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+Destroyer >> adjustForDeepSpace [
+    "Destroyers shields are halved in deep space"
+    self shields: (self shields / 2) rounded.
+]
+
+{ #category : 'as yet unclassified' }
 Destroyer >> attackAgainstBattleCruiser: anElement [
 
 	region applyAttackAgainstBattleCruiser: anElement ships: self
@@ -33,6 +39,14 @@ Destroyer >> attackAgainstDestroyer: anElement [
 Destroyer >> attackAgainstFighter: anElement [
 
 	region applyAttackAgainstFighter: anElement ships: self
+]
+
+{ #category : 'as yet unclassified' }
+Destroyer >> calculateDamage: amount toTarget: target [
+    "Double damage to shields, half damage to hull"
+    target shields > 0
+        ifTrue: [ ^ amount * 2 ]
+        ifFalse: [ ^ amount / 2 ]
 ]
 
 { #category : 'accessing' }

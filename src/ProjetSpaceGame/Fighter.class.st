@@ -12,6 +12,12 @@ Class {
 }
 
 { #category : 'as yet unclassified' }
+Fighter >> adjustForDeepSpace [
+    "Fighters lose all shields in deep space"
+    self shields: 0.
+]
+
+{ #category : 'as yet unclassified' }
 Fighter >> attackAgainstBattleCruiser: anElement [
 
 	region applyAttackAgainstBattleCruiser: anElement ships: self
@@ -33,6 +39,14 @@ Fighter >> attackAgainstDestroyer: anElement [
 Fighter >> attackAgainstFighter: anElement [
 
 	region applyAttackAgainstFighter: anElement ships: self
+]
+
+{ #category : 'testing' }
+Fighter >> canDamageShields: targetShip [
+    "Fighters cannot penetrate destroyer and battlecruiser shields"
+    ^ (targetShip isKindOf: Destroyer) not and: [
+        (targetShip isKindOf: BattleCruiser) not
+    ]
 ]
 
 { #category : 'accessing' }
