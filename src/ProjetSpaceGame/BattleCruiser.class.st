@@ -5,7 +5,8 @@ Class {
 		'shields',
 		'hull',
 		'damage',
-		'region'
+		'region',
+		'type'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
@@ -26,13 +27,25 @@ BattleCruiser >> attackAgainstBattleCruiser: anElement [
 { #category : 'as yet unclassified' }
 BattleCruiser >> attackAgainstCruiser: anElement [
 
-	region applyAttackAgainstCruiser: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 BattleCruiser >> attackAgainstDestroyer: anElement [
 
-	region applyAttackAgainstDestroyer: anElement ships: self.
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
@@ -78,7 +91,8 @@ BattleCruiser >> initialize [
 	shields := 12000.
 	hull := 6000.
 	damage := 1000.
-	region := SolarSystem
+	region := SolarSystem new.
+	type := 'BattleCruiser'
 ]
 
 { #category : 'accessing' }
@@ -106,7 +120,35 @@ BattleCruiser >> shields: anObject [
 ]
 
 { #category : 'as yet unclassified' }
+BattleCruiser >> transformer [
+
+| anElement vaisseauUpgrade|
+
+anElement := self region.
+
+vaisseauUpgrade := anElement transformerBattleCruiser: self.
+
+^vaisseauUpgrade 
+
+
+
+	
+]
+
+{ #category : 'accessing' }
+BattleCruiser >> type [
+
+	^ type
+]
+
+{ #category : 'accessing' }
+BattleCruiser >> type: anObject [
+
+	type := anObject
+]
+
+{ #category : 'as yet unclassified' }
 BattleCruiser >> vs: anElement [
 
-	anElement attackAgainstBattleCruiser: anElement.
+	anElement attackAgainstBattleCruiser: self.
 ]

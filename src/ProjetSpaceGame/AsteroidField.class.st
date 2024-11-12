@@ -8,69 +8,46 @@ Class {
 	#package : 'ProjetSpaceGame'
 }
 
-{ #category : 'as yet unclassified' }
-AsteroidField >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-AsteroidField >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-AsteroidField >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-AsteroidField >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
 { #category : 'initialization' }
-AsteroidField >> initialize [ 
+AsteroidField >> initialize [
+
+	super initialize 
+]
+
+{ #category : 'as yet unclassified' }
+AsteroidField >> transformerBattleCruiser: anElement [
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+AsteroidField >> transformerCruiser: anElement [
+
+	anElement hull * 0.5.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+AsteroidField >> transformerDestroyer: anElement [
+
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+AsteroidField >> transformerFighter: anElement [
 	
-	region := SolarSystem new.
-]
-
-{ #category : 'accessing' }
-AsteroidField >> region [
-
-	^ region
-]
-
-{ #category : 'accessing' }
-AsteroidField >> region: anObject [
-
-	region := anObject
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	
+	^ anElement
 ]

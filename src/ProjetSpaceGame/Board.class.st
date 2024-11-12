@@ -2,7 +2,9 @@ Class {
 	#name : 'Board',
 	#superclass : 'Object',
 	#instVars : [
-		'tiles'
+		'tiles',
+		'vaisseauUpgrade2',
+		'vaisseauUpgrade1'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'

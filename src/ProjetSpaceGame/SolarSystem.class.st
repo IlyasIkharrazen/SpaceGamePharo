@@ -8,56 +8,47 @@ Class {
 	#package : 'ProjetSpaceGame'
 }
 
-{ #category : 'as yet unclassified' }
-SolarSystem >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-SolarSystem >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-SolarSystem >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-SolarSystem >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
 { #category : 'initialization' }
 SolarSystem >> initialize [
+	super initialize.
+]
 
-	region := SolarSystem new
+{ #category : 'as yet unclassified' }
+SolarSystem >> transformerBattleCruiser: anElement [
+	
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+SolarSystem >> transformerCruiser: anElement [
+	
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+SolarSystem >> transformerDestroyer: anElement [
+
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+SolarSystem >> transformerFighter: anElement [
+
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
 ]

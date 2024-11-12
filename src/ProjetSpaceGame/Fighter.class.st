@@ -5,48 +5,59 @@ Class {
 		'shields',
 		'hull',
 		'damage',
-		'region'
+		'region',
+		'type'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
 }
 
 { #category : 'as yet unclassified' }
-Fighter >> adjustForDeepSpace [
-    "Fighters lose all shields in deep space"
-    self shields: 0.
-]
-
-{ #category : 'as yet unclassified' }
 Fighter >> attackAgainstBattleCruiser: anElement [
 
-	region applyAttackAgainstBattleCruiser: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstCruiser: anElement [
 
-	region applyAttackAgainstCruiser: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstDestroyer: anElement [
 
-	region applyAttackAgainstDestroyer: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Fighter >> attackAgainstFighter: anElement [
 
-	region applyAttackAgainstFighter: anElement ships: self
-]
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-{ #category : 'testing' }
-Fighter >> canDamageShields: targetShip [
-    "Fighters cannot penetrate destroyer and battlecruiser shields"
-    ^ (targetShip isKindOf: Destroyer) not and: [
-        (targetShip isKindOf: BattleCruiser) not
-    ]
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'accessing' }
@@ -80,7 +91,8 @@ Fighter >> initialize [
 	shields := 100.
 	hull := 400.
 	damage := 50.
-	region := SolarSystem
+	region := SolarSystem new.
+	type := 'Fighter'
 ]
 
 { #category : 'accessing' }
@@ -108,7 +120,30 @@ Fighter >> shields: anObject [
 ]
 
 { #category : 'as yet unclassified' }
+Fighter >> transformer [
+
+	| anElement vaisseauUpgrade |
+	anElement := self region.
+
+	vaisseauUpgrade := anElement transformerFighter: self.
+	
+^vaisseauUpgrade 
+]
+
+{ #category : 'accessing' }
+Fighter >> type [
+
+	^ type
+]
+
+{ #category : 'accessing' }
+Fighter >> type: anObject [
+
+	type := anObject
+]
+
+{ #category : 'as yet unclassified' }
 Fighter >> vs: anElement [
 
-	anElement attackAgainstFighter: anElement
+	anElement attackAgainstFighter: self
 ]

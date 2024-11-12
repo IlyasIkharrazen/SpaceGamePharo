@@ -8,56 +8,48 @@ Class {
 	#package : 'ProjetSpaceGame'
 }
 
-{ #category : 'as yet unclassified' }
-DeepSpace >> applyAttackAgainstBattleCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-DeepSpace >> applyAttackAgainstCruiser: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-DeepSpace >> applyAttackAgainstDestroyer: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
-{ #category : 'as yet unclassified' }
-DeepSpace >> applyAttackAgainstFighter: anElement1 ships: anElement2 [
-
-	| Dd As |
-	Dd := anElement1 damage * anElement1 shields + anElement1 region.
-
-	As := anElement2 damage * anElement2 shields + anElement2 region.
-
-	anElement1 shields: anElement1 shields - As.
-	anElement2 shields: anElement2 shields - Dd
-]
-
 { #category : 'initialization' }
 DeepSpace >> initialize [
 
-	region := SolarSystem new
+	super initialize 
+]
+
+{ #category : 'as yet unclassified' }
+DeepSpace >> transformerBattleCruiser: anElement [
+	
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+	
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+DeepSpace >> transformerCruiser: anElement [
+
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+DeepSpace >> transformerDestroyer: anElement [
+	
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
+]
+
+{ #category : 'as yet unclassified' }
+DeepSpace >> transformerFighter: anElement [
+
+	anElement hull * 1.
+	anElement shields * 1.
+	anElement damage * 1.
+
+	^ anElement
 ]

@@ -5,48 +5,59 @@ Class {
 		'shields',
 		'hull',
 		'damage',
-		'region'
+		'region',
+		'type'
 	],
 	#category : 'ProjetSpaceGame',
 	#package : 'ProjetSpaceGame'
 }
 
 { #category : 'as yet unclassified' }
-Destroyer >> adjustForDeepSpace [
-    "Destroyers shields are halved in deep space"
-    self shields: (self shields / 2) rounded.
-]
-
-{ #category : 'as yet unclassified' }
 Destroyer >> attackAgainstBattleCruiser: anElement [
 
-	region applyAttackAgainstBattleCruiser: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstCruiser: anElement [
 
-	region applyAttackAgainstCruiser: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstDestroyer: anElement [
 
-	region applyAttackAgainstDestroyer: anElement ships: self
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
+
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'as yet unclassified' }
 Destroyer >> attackAgainstFighter: anElement [
 
-	region applyAttackAgainstFighter: anElement ships: self
-]
+	| Dd As |
+	Dd := anElement damage * anElement shields + anElement region.
 
-{ #category : 'as yet unclassified' }
-Destroyer >> calculateDamage: amount toTarget: target [
-    "Double damage to shields, half damage to hull"
-    target shields > 0
-        ifTrue: [ ^ amount * 2 ]
-        ifFalse: [ ^ amount / 2 ]
+	As := damage * shields + region.
+
+	anElement shields: anElement shields - As.
+	shields := shields - Dd
 ]
 
 { #category : 'accessing' }
@@ -80,7 +91,8 @@ Destroyer >> initialize [
 	shields := 5000.
 	hull := 10000.
 	damage := 2000.
-	region := SolarSystem
+	region := SolarSystem new.
+	type := 'Destroyer'
 ]
 
 { #category : 'accessing' }
@@ -108,7 +120,30 @@ Destroyer >> shields: anObject [
 ]
 
 { #category : 'as yet unclassified' }
+Destroyer >> transformer [
+
+	| anElement vaisseauUpgrade |
+	anElement := self region.
+
+	vaisseauUpgrade := anElement transformerDestroyer: self.
+	
+^vaisseauUpgrade 
+]
+
+{ #category : 'accessing' }
+Destroyer >> type [
+
+	^ type
+]
+
+{ #category : 'accessing' }
+Destroyer >> type: anObject [
+
+	type := anObject
+]
+
+{ #category : 'as yet unclassified' }
 Destroyer >> vs: anElement [
 
-	anElement attackAgainstDestroyer: anElement
+	anElement attackAgainstDestroyer: self
 ]
