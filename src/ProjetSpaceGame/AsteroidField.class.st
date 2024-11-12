@@ -16,6 +16,7 @@ AsteroidField >> initialize [
 
 { #category : 'as yet unclassified' }
 AsteroidField >> transformerBattleCruiser: anElement [
+
 	anElement hull * 1.
 	anElement shields * 1.
 	anElement damage * 1.
