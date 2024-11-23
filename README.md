@@ -1,6 +1,6 @@
 Participants du projet
 
-INELHAJ Abdullah
+INELHAJ Abdoullah
 IKHARRAZEN Ilyas
 
 Projet Space Game
